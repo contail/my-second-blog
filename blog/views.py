@@ -71,7 +71,7 @@ def results(request, area):
         for candidate in candidates:
             try:
                 choice = Choice.objects.get(poll_id = poll.id, candidate_id= candidate.id)
-                rates.append(choice.votes*100 / result['total_votes'])
+                rates.append(round(choice.votes*100 / result['total_votes'],1))
             except:
                 rates.append(0)
         result['rates'] = rates
